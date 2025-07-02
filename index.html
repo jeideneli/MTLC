@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>School Website</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #2c3e50;
+            color: #fff;
+            padding: 16px 32px;
+            position: relative;
+        }
+        
+        header h1 {
+            margin: 0 auto;
+            text-align: center;
+            flex: 1;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+        
+        .header-sub {
+            display: block;
+            font-size: 0.7em;
+            color: #b0bec5;
+            font-weight: 400;
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+        
+        @media (max-width: 700px) {
+            header h1 {
+                font-size: 1.1em;
+            }
+            .header-sub {
+                font-size: 0.9em;
+            }
+        }
+        
+        .menu-btn {
+            position: static;
+            margin-left: 24px;
+            background: #fff;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.18);
+            width: 52px;
+            height: 52px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: box-shadow 0.2s, background 0.2s;
+        }
+        
+        .menu-btn:hover {
+            background: #1976d2;
+            box-shadow: 0 4px 16px rgba(25, 118, 210, 0.18);
+        }
+        
+        .menu-btn span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            margin: 4px 0;
+            background: #1976d2;
+            border-radius: 2px;
+            transition: background 0.2s;
+        }
+        
+        .menu-btn:hover span {
+            background: #fff;
+        }
+        
+        .menu {
+            display: none;
+            flex-direction: column;
+            position: fixed;
+            top: 80px;
+            right: 32px;
+            background: #34495e;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            min-width: 180px;
+            z-index: 9999;
+        }
+        
+        .menu.show {
+            display: flex;
+        }
+        
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-bottom: 1px solid #2c3e50;
+            transition: background 0.2s;
+        }
+        
+        .menu a:last-child {
+            border-bottom: none;
+        }
+        
+        .menu a:hover {
+            background: #2c3e50;
+        }
+        
+        h1 {
+            margin: 0;
+            margin-right: 70px;
+        }
+        /* Marquee/Scrolling Text */
+        
+        #marquee {
+            width: 100%;
+            background: #1976d2;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 8px 0;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 3000;
+        }
+        
+        #marquee div {
+            white-space: nowrap;
+            display: inline-block;
+            will-change: transform;
+        }
+        /* Add margin-top to body to avoid overlap with fixed marquee */
+        
+        body {
+            margin-top: 40px;
+        }
+        
+        .reg-btn {
+            position: fixed;
+            left: 90px;
+            bottom: 24px;
+            z-index: 2100;
+            background: #388e3c;
+            border-radius: 24px;
+            box-shadow: 0 2px 8px rgba(56, 142, 60, 0.5);
+            padding: 14px 32px;
+            color: #fff;
+            font-size: 1.08em;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .custom-footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 40px 0 0 0;
+            font-size: 1em;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        .footer-col {
+            flex: 1 1 220px;
+            margin: 0 16px 24px 16px;
+        }
+        
+        .footer-logo {
+            width: 80px;
+            margin-bottom: 12px;
+        }
+        
+        .footer-col h4 {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            color: #fff;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-col ul li a {
+            color: #b0bec5;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: #1976d2;
+        }
+        
+        .footer-btn {
+            display: inline-block;
+            background: #e74c3c;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 18px;
+            transition: background 0.2s;
+        }
+        
+        .footer-btn:hover {
+            background: #c0392b;
+        }
+        
+        .footer-bottom {
+            background: #232e36;
+            text-align: center;
+            padding: 18px 0;
+            font-size: 1em;
+            margin-top: 24px;
+            border-radius: 0 0 12px 12px;
+            color: #b0bec5;
+        }
+        
+        .main-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-left: 32px;
+            font-size: 1.08em;
+            background: transparent;
+            padding: 18px 0;
+        }
+        
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0 8px;
+            transition: color 0.2s;
+        }
+        
+        .main-nav a:hover {
+            color: #1976d2;
+        }
+        
+        .nav-icons {
+            margin-left: 18px;
+            color: #fff;
+            font-size: 1.1em;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: #1976d2;
+            cursor: pointer;
+            margin-left: 16px;
+        }
+        
+        @media (max-width: 800px) {
+            .main-nav {
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100vw;
+                background: #2c3e50;
+                box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+                padding: 18px 0 18px 24px;
+                z-index: 9999;
+            }
+            .main-nav.show {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+        
+        mark.highlighted-search {
+            background: #ffe082;
+            color: #222;
+            border-radius: 3px;
+            padding: 0 2px;
+        }
+        
+        #siteSearchInput:focus {
+            outline: 2px solid #1976d2;
+        }
+        
+        .modal-tab.active {
+            background: #1976d2 !important;
+            color: #fff !important;
+        }
+        
+        .modal-tab {
+            background: #e0e0e0;
+            color: #1976d2;
+        }
+        
+        .modal-tab-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+            margin-top: -32px;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .modal-tab {
+            padding: 10px 32px;
+            border: none;
+            border-radius: 16px 16px 0 0;
+            background: #2196f3;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            box-shadow: 0 -2px 8px rgba(33, 150, 243, 0.15);
+            transition: background 0.2s, color 0.2s;
+            position: relative;
+            top: 0;
+        }
+        
+        .modal-tab:not(.active) {
+            background: #90caf9;
+            color: #1976d2;
+        }
+        
+        .modal-tab.active {
+            background: #1976d2;
+            color: #fff;
+            z-index: 3;
+        }
+        
+        .floating-gallery-marquee {
+            position: absolute;
+            top: 18px;
+            left: 0;
+            width: 100vw;
+            height: 90px;
+            overflow: hidden;
+            z-index: 10;
+            pointer-events: none;
+        }
+        
+        .gallery-track {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            animation: gallery-slide 18s linear infinite;
+        }
+        
+        .gallery-track img {
+            width: 110px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 0 18px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.18);
+            border: 3px solid #fff;
+            background: #fff;
+        }
+        
+        @keyframes gallery-slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .floating-gallery-marquee {
+                height: 60px;
+            }
+            .gallery-track img {
+                width: 70px;
+                height: 48px;
+                margin: 0 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Marquee/Scrolling Text at the top -->
+    <div style="width:100%; background:#1976d2; color:#fff; font-weight:bold; font-size:1.1em; padding:8px 0; overflow:hidden; position:fixed; top:0; left:0; z-index:3000;">
+        <div id="marqueeText" style="white-space:nowrap; display:inline-block; will-change:transform;">
+            Welcome to Maria Theresa Ledochowaska College Lugazi. Contact us on 0777791053 / 0708366930 &nbsp; Welcome to Maria Theresa Ledochowaska College Lugazi. Contact us on 0777791053 / 0708366930 &nbsp;
+        </div>
+    </div>
+    <script>
+        // Simple marquee effect using JS and CSS transform
+        (function() {
+            var marquee = document.getElementById('marqueeText');
+            var width = marquee.offsetWidth;
+            var parentWidth = marquee.parentElement.offsetWidth;
+            var pos = parentWidth;
+
+            function animate() {
+                pos--;
+                if (pos < -width) pos = parentWidth;
+                marquee.style.transform = 'translateX(' + pos + 'px)';
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+    </script>
+    <header>
+        <img src="image.jpg" alt="School Badge" style="height:80px; margin-right:24px; float:none; border-radius:12px; box-shadow:0 2px 8px rgba(44,62,80,0.18);">
+        <h1>MARIA THERESA LEDOCHOWASKA COLLEGE LUGAZI</h1>
+        <button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('.main-nav').classList.toggle('show')">
+            <i class="fa fa-bars"></i>
+        </button>
+        <nav class="main-nav">
+            <a href="#display">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#subjects">Academics</a>
+            <a href="#library">Library</a>
+            <a href="#clubs">Clubs</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact Us</a>
+            <span class="nav-icons">
+                <button id="searchToggle" style="background:none;border:none;color:#fff;cursor:pointer;font-size:1.1em;outline:none;">
+                    <i class="fa fa-search"></i>
+                </button>
+                <button id="loginBtn" style="background:none;border:none;color:#fff;cursor:pointer;font-size:1.1em;outline:none;">
+                    <i class="fa fa-lock"></i>
+                </button>
+            </span>
+            <input id="siteSearchInput" type="text" placeholder="Search..." style="display:none; margin-left:10px; padding:6px 12px; border-radius:6px; border:1px solid #ccc; font-size:1em; min-width:120px;" />
+        </nav>
+    </header>
+    <nav class="menu" id="menu">
+        <a href="#display" style="font-weight: bold; color: #1976d2;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="vertical-align: middle; margin-right: 6px;">
+                <path d="M3 12L12 5l9 7" stroke="#1976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 21V13h6v8" stroke="#1976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg> Home
+        </a>
+        <a href="#subjects">Academics</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#video-tour">Campus Life</a>
+        <a href="#enroll">Admission</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+    <main>
+        <h2>Maria Theresa Ledochowaska College Lugazi</h2>
+        <p>Bring your child so tht he can grow holistically and with fear of God inclusive.</p>
+        <img src="image.jpg" alt="Maria Theresa Ledochowska" style="display:block; margin:24px auto 0 auto; max-width:220px; border-radius:12px; box-shadow:0 2px 8px rgba(44,62,80,0.12);">
+        <div id="display" style="display: flex; flex-direction: column; align-items: center; margin-top: 32px;">
+            <!-- Floating gallery marquee removed -->
+            <div style="display: flex; justify-content: center;">
+                <svg width="360" height="180" viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Student 1 -->
+            <g>
+                 <img src="Gallery (1).jpg" style="display: block;" margin:24px auto 0 auto;  max-width:220px; border-radius:12px; box-shadow:0 2px 8px rgba(44,62,80,0.12);">
+            </g>
+            <!-- Student 2 -->
+            <g>
+               <img src="Gallery (3).jpg" style="display: block;" margin:24px auto 0 auto;  max-width:220px; border-radius:12px; box-shadow:0 2px 8px rgba(44,62,80,0.12);">
+            </g>
+            </div>
+        </div>
+
+        <!-- CEO Section -->
+        <section style="max-width: 700px; margin: 48px auto 0 auto; background: #f8f9fa; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 32px;">
+            <h2 style="color: #2c3e50; margin-top: 0;">Meet Our Directors</h2>
+            <div style="display: flex; align-items: center; gap: 32px; background: #fff; border-radius: 16px; padding: 16px 24px; box-shadow: 0 4px 16px rgba(44,62,80,0.10);">
+                <img src="ceo maria .jpg" alt="Director 1" style="width: 160px; height: 160px; object-fit: cover; border-radius: 50%; border: 4px solid #3498db; box-shadow: 0 4px 16px rgba(44,62,80,0.18); background: #eaf6fb;">
+                <img src="anty tebi.jpg" alt="Director 2" style="width: 160px; height: 160px; object-fit: cover; border-radius: 50%; border: 4px solid #3498db; box-shadow: 0 4px 16px rgba(44,62,80,0.18); background: #eaf6fb;">
+                <img src="treza.jpg" alt="Director 3" style="width: 160px; height: 160px; object-fit: cover; border-radius: 50%; border: 4px solid #3498db; box-shadow: 0 4px 16px rgba(44,62,80,0.18); background: #eaf6fb;">
+                <div>
+                    <h3 style="margin: 0 0 8px 0;">Maria Theresa Ledochowska</h3>
+                    <p style="margin: 0; color: #333;">
+                        Maria Theresa Ledochowska is the visionary CEO of our college. Her dedication to education, leadership, and community service inspires both staff and students. Under her guidance, Maria Theresa Ledochowska College continues to excel in academic and social development.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Why Maria Theresa Ledochowska College Section -->
+        <section style="max-width: 700px; margin: 40px auto; background: #eaf6fb; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px;">
+            <h2 style="color: #2c3e50; margin-top: 0;">Why Maria Theresa Ledochowska College?</h2>
+            <ul style="color: #333; font-size: 1.08em; line-height: 1.7; padding-left: 20px;">
+                <li>
+                    <strong>Personalized Attention:</strong> We offer individual attention which helps the learner to focus and sustain attention, thereby making the learning process more effective and enjoyable.
+                </li>
+                <li>
+                    <strong>Supportive Environment:</strong> Our college fosters a caring and supportive atmosphere where every student feels valued and motivated to achieve their best.
+                </li>
+                <li>
+                    <strong>Holistic Development:</strong> We believe in nurturing not just academic excellence but also social, emotional, and ethical growth.
+                </li>
+                <li>
+                    <strong>Experienced Educators:</strong> Our dedicated staff are passionate about teaching and committed to the success of every student.
+                </li>
+                <li>
+                    <strong>Modern Facilities:</strong> We provide up-to-date resources and facilities to enhance the learning experience.
+                </li>
+            </ul>
+        </section>
+        <!-- Subjects, Clubs, and Tours Section -->
+        <section id="subjects" style="max-width: 900px; margin: 48px auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 32px;">
+            <h2 style="color: #2c3e50; margin-top: 0;">Our Subjects, Clubs & Tours</h2>
+            <h3 style="color: #2980b9;">Subjects Offered</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 18px;">
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/book.png" alt="English" style="width:48px;">
+                    <p><strong>English Language & Literature</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/calculator.png" alt="Mathematics" style="width:48px;">
+                    <p><strong>Mathematics</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/chemistry.png" alt="Chemistry" style="width:48px;">
+                    <p><strong>Chemistry</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/physics.png" alt="Physics" style="width:48px;">
+                    <p><strong>Physics</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/biology.png" alt="Biology" style="width:48px;">
+                    <p><strong>Biology</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/computer.png" alt="ICT" style="width:48px;">
+                    <p><strong>ICT/Computer Studies</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/history.png" alt="History" style="width:48px;">
+                    <p><strong>History</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/geography.png" alt="Geography" style="width:48px;">
+                    <p><strong>Geography</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/paint-palette.png" alt="Art" style="width:48px;">
+                    <p><strong>Art & Design</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/music.png" alt="Music" style="width:48px;">
+                    <p><strong>Music</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/basketball.png" alt="Physical Education" style="width:48px;">
+                    <p><strong>Physical Education</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/handshake.png" alt="Business Studies" style="width:48px;">
+                    <p><strong>Business Studies</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/scale.png" alt="Civic Education" style="width:48px;">
+                    <p><strong>Civic Education</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/translation.png" alt="French" style="width:48px;">
+                    <p><strong>French</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/translation.png" alt="Local Language" style="width:48px;">
+                    <p><strong>Local Language</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/engineering.png" alt="Technical Drawing" style="width:48px;">
+                    <p><strong>Technical Drawing</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/chef-hat.png" alt="Home Economics" style="width:48px;">
+                    <p><strong>Home Economics</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/plant-under-sun.png" alt="Agriculture" style="width:48px;">
+                    <p><strong>Agriculture</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/robot-2.png" alt="Robotics" style="width:48px;">
+                    <p><strong>Robotics</strong></p>
+                </div>
+                <div style="flex: 1 1 180px; min-width: 180px;">
+                    <img src="https://img.icons8.com/color/96/000000/leadership.png" alt="Leadership" style="width:48px;">
+                    <p><strong>Leadership & Life Skills</strong></p>
+                </div>
+            </div>
+
+            <h3 style="color: #2980b9; margin-top: 32px;">Student Clubs</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 18px;">
+                <div style="flex: 1 1 220px; min-width: 220px;">
+                    <img src="https://img.icons8.com/color/96/000000/theatre-mask.png" alt="Drama Club" style="width:48px;">
+                    <p><strong>Drama Club:</strong> Express creativity through acting, script writing, and stage performance.</p>
+                </div>
+                <div style="flex: 1 1 220px; min-width: 220px;">
+                    <img src="https://img.icons8.com/color/96/000000/football2.png" alt="Sports Club" style="width:48px;">
+                    <p><strong>Sports Club:</strong> Participate in football, basketball, athletics, and more for fitness and teamwork.</p>
+                </div>
+                <div style="flex: 1 1 220px; min-width: 220px;">
+                    <img src="https://img.icons8.com/color/96/000000/robot-2.png" alt="Robotics Club" style="width:48px;">
+                    <p><strong>Robotics Club:</strong> Build and program robots, compete in tech challenges, and learn coding.</p>
+                </div>
+                <div style="flex: 1 1 220px; min-width: 220px;">
+                    <img src="https://img.icons8.com/color/96/000000/paint-palette.png" alt="Art Club" style="width:48px;">
+                    <p><strong>Art Club:</strong> Explore painting, drawing, sculpture, and creative design projects.</p>
+                </div>
+                <div style="flex: 1 1 220px; min-width: 220px;">
+                    <img src="https://img.icons8.com/color/96/000000/music.png" alt="Music Club" style="width:48px;">
+                    <p><strong>Music Club:</strong> Join the choir, band, or learn instruments and music production.</p>
+                </div>
+                <div style="flex: 1 1 220px; min-width: 220px;">
+                    <img src="https://img.icons8.com/color/96/000000/volunteer.png" alt="Charity Club" style="width:48px;">
+                    <p><strong>Charity Club:</strong> Engage in community service, fundraising, and helping those in need.</p>
+                </div>
+                <div style="flex: 1 1 220px; min-width: 220px;">
+                    <img src="https://img.icons8.com/color/96/000000/leadership.png" alt="Leadership Club" style="width:48px;">
+                    <p><strong>Leadership Club:</strong> Develop leadership skills, organize events, and represent the student body.</p>
+                </div>
+                <div style="flex: 1 1 220px; min-width: 220px;">
+                    <img src="https://img.icons8.com/color/96/000000/environment-care.png" alt="Environment Club" style="width:48px;">
+                    <p><strong>Environment Club:</strong> Promote sustainability, tree planting, and environmental awareness.</p>
+                </div>
+                <div style="flex: 1 1 220px; min-width: 220px;">
+                    <img src="https://img.icons8.com/color/96/000000/chef-hat.png" alt="Cooking Club" style="width:48px;">
+                    <p><strong>Cooking Club:</strong> Learn culinary skills, nutrition, and participate in cooking competitions.</p>
+                </div>
+                <div style="flex: 1 1 220px; min-width: 220px;">
+                    <img src="https://img.icons8.com/color/96/000000/book.png" alt="Debate Club" style="width:48px;">
+                    <p><strong>Debate Club:</strong> Sharpen public speaking, critical thinking, and argumentation skills.</p>
+                </div>
+            </div>
+
+            <h3 style="color: #2980b9; margin-top: 32px;">Outside Tours & Excursions</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 18px;">
+                <div style="flex: 1 1 260px; min-width: 260px;">
+                    <img src="https://img.icons8.com/color/96/000000/bus.png" alt="Educational Tours" style="width:48px;">
+                    <p><strong>Educational Tours:</strong> Visits to museums, science centers, and historical sites to enhance classroom learning.</p>
+                </div>
+                <div style="flex: 1 1 260px; min-width: 260px;">
+                    <img src="https://img.icons8.com/color/96/000000/forest.png" alt="Nature Trips" style="width:48px;">
+                    <p><strong>Nature Trips:</strong> Explore national parks, botanical gardens, and wildlife sanctuaries for environmental education.</p>
+                </div>
+                <div style="flex: 1 1 260px; min-width: 260px;">
+                    <img src="https://img.icons8.com/color/96/000000/city.png" alt="City Tours" style="width:48px;">
+                    <p><strong>City Tours:</strong> Discover local culture, government institutions, and urban development projects.</p>
+                </div>
+                <div style="flex: 1 1 260px; min-width: 260px;">
+                    <img src="https://img.icons8.com/color/96/000000/camping-tent.png" alt="Camping" style="width:48px;">
+                    <p><strong>Camping:</strong> Overnight camps for team building, adventure, and outdoor skills development.</p>
+                </div>
+                <div style="flex: 1 1 260px; min-width: 260px;">
+                    <img src="https://img.icons8.com/color/96/000000/volunteer.png" alt="Community Outreach" style="width:48px;">
+                    <p><strong>Community Outreach:</strong> Participate in service projects and outreach programs to give back to society.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learn and Grow Together Section -->
+        <section style="max-width: 700px; margin: 40px auto 24px auto; background: #e3f2fd; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px; text-align: center;">
+            <h2 style="color: #1976d2; margin-top: 0;">A Place to Learn and Grow Together</h2>
+            <p style="color: #333; font-size: 1.15em;">
+                At Maria Theresa Ledochowska College, we believe that education is more than just academics. Our community is a nurturing environment where students and staff support each other, share ideas, and celebrate achievements. Here, every learner is encouraged
+                to discover their strengths, develop new skills, and grow into responsible, confident individuals ready to make a difference in the world.
+            </p>
+            <a href="#about" style="display: inline-flex; align-items: center; background: #1976d2; color: #fff; text-decoration: none; padding: 12px 28px; border-radius: 24px; font-size: 1.08em; font-weight: bold; margin-top: 18px; box-shadow: 0 2px 8px rgba(25, 118, 210, 0.12); transition: background 0.2s;">
+            About Us
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin-left: 8px;">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+                </a>
+                </section>
+                <!-- At a Glance Section -->
+                <section style="max-width: 800px; margin: 40px auto 24px auto; background: #f1f8e9; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px;">
+                    <h2 style="color: #388e3c; margin-top: 0;">At a Glance</h2>
+                    <p style="color: #333; font-size: 1.13em;">
+                        Maria Theresa Ledochowska College is one of the few schools offering a variety of learning areas to its clients. The school has learning areas in all subject groups examinable by the country's examining board – <strong>UNEB</strong>.
+                        Our diverse curriculum ensures that every student finds their passion and excels academically and socially.
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; margin: 32px 0;">
+                        <div style="flex: 1 1 180px; min-width: 180px; text-align: center;">
+                            <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">20+</span>
+                            <div style="margin-top: 6px; color: #333;">Subjects Offered</div>
+                        </div>
+                        <div style="flex: 1 1 180px; min-width: 180px; text-align: center;">
+                            <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">5</span>
+                            <div style="margin-top: 6px; color: #333;">World Languages</div>
+                        </div>
+                        <div style="flex: 1 1 180px; min-width: 180px; text-align: center;">
+                            <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">3</span>
+                            <div style="margin-top: 6px; color: #333;">Electives</div>
+                        </div>
+                        <div style="flex: 1 1 180px; min-width: 180px; text-align: center;">
+                            <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">10</span>
+                            <div style="margin-top: 6px; color: #333;">Classrooms</div>
+                        </div>
+                        <div style="flex: 1 1 180px; min-width: 180px; text-align: center;">
+                            <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">22</span>
+                            <div style="margin-top: 6px; color: #333;">Excellent Teachers</div>
+                        </div>
+                        <div style="flex: 1 1 180px; min-width: 180px; text-align: center;">
+                            <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">300</span>
+                            <div style="margin-top: 6px; color: #333;">Currently Enrolled Students</div>
+                        </div>
+                    </div>
+                    <a href="#" id="enrollBtn2" class="enroll-now-btn" style="display: inline-flex; align-items: center; background: #1976d2; color: #fff; text-decoration: none; padding: 12px 28px; border-radius: 24px; font-size: 1.08em; font-weight: bold; box-shadow: 0 2px 8px rgba(25, 118, 210, 0.12); transition: background 0.2s;">
+        Enroll Now
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin-left: 8px;">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+                </section>
+                <!-- Featured In Section -->
+                <section style="max-width: 800px; margin: 40px auto 24px auto; background: #fff3e0; border-radius: 12px; box-shadow: 0 2px 8px rgba(255,152,0,0.08); padding: 32px; text-align: center;">
+                    <h2 style="color: #ff9800; margin-top: 0;">Featured In</h2>
+                    <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; align-items: center; margin-top: 24px;">
+                        <img src="Buk logo.jpg" alt="Daily Monitor" style="height: 48px;">
+                        <img src="Daily monitor.jpg" alt="New Vision" style="height: 48px;">
+                        <img src="NTV.jpg" alt="NTV Uganda" style="height: 48px;">
+                        <img src="UBC.jpg" alt="UBC TV" style="height: 48px;">
+                    </div>
+                    <p style="color: #333; margin-top: 18px;">
+                        Maria Theresa Ledochowska College has been recognized by leading media houses for its excellence in education and community impact.
+                    </p>
+                </section>
+
+                <!-- Testimonials Section -->
+                <section style="max-width: 800px; margin: 40px auto 24px auto; background: #e8f5e9; border-radius: 12px; box-shadow: 0 2px 8px rgba(56,142,60,0.08); padding: 32px;">
+                    <h2 style="color: #388e3c; margin-top: 0;">What Our Alumni Say</h2>
+                    <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
+                        <div style="flex: 1 1 260px; min-width: 260px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(56,142,60,0.06); padding: 20px;">
+                            <p style="font-style: italic; color: #333;">"The personalized attention I received at Maria Theresa Ledochowska College helped me excel in my studies. Today, I am working at a top bank in Kampala."</p>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">
+                                <img src="ceo.jpg" alt="Alumni 1" style="width: 48px; height: 48px; border-radius: 50%;">
+                                <div>
+                                    <strong>John S.</strong><br> Class of 2018
+                                </div>
+                            </div>
+                        </div>
+                        <div style="flex: 1 1 260px; min-width: 260px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(56,142,60,0.06); padding: 20px;">
+                            <p style="font-style: italic; color: #333;">"Thanks to the supportive teachers and diverse clubs, I got a scholarship to Makerere University. I am proud to be an alumna of this great school."</p>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">
+                                <img src="ceo.jpg" alt="Alumni 2" style="width: 48px; height: 48px; border-radius: 50%;">
+                                <div>
+                                    <strong>Grace N.</strong><br> Class of 2020
+                                </div>
+                            </div>
+                        </div>
+                        <div style="flex: 1 1 260px; min-width: 260px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(56,142,60,0.06); padding: 20px;">
+                            <p style="font-style: italic; color: #333;">"The skills I learned at Maria Theresa Ledochowska College opened doors for me at a leading tech company. The experience was truly life-changing."</p>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">
+                                <img src="ceo.jpg" alt="Alumni 3" style="width: 48px; height: 48px; border-radius: 50%;">
+                                <div>
+                                    <strong>Michael O.</strong><br> Class of 2017
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="color: #333; margin-top: 24px;">
+                        Many of our graduates are now employed in top offices and universities both in Uganda and abroad.
+                    </p>
+                </section>
+                <section style="max-width: 800px; margin: 40px auto 24px auto; background: #e3f2fd; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px; text-align: center;">
+                    <h2 style="color: #1976d2; margin-top: 0;">Because You Deserve to Shine</h2>
+                    <p style="color: #333; font-size: 1.15em;">
+                        Enroll for new admission on or before <strong>February 2025</strong>.<br>
+                        <span style="display: block; margin: 16px 0 8px 0;">
+            Bring your children to Maria Theresa Ledochowaska College and we start on the journey.
+        </span>
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; margin-top: 18px;">
+                        <a href="#" class="enroll-now-btn" style="display: inline-flex; align-items: center; background: #1976d2; color: #fff; text-decoration: none; padding: 12px 28px; border-radius: 24px; font-size: 1.08em; font-weight: bold; box-shadow: 0 2px 8px rgba(25, 118, 210, 0.12); transition: background 0.2s;">
+        Enroll Now
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin-left: 8px;">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+                    </div>
+                </section>
+                <!-- Video Tour Section -->
+                <section id="video-tour" style="max-width: 800px; margin: 40px auto 24px auto; background: #e3f2fd; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px; text-align: center;">
+                    <h2 style="color: #1976d2; margin-top: 0;">Video Tour</h2>
+                    <p style="color: #333; font-size: 1.1em; line-height: 1.6; margin-bottom: 24px;">
+                        Experience our vibrant school community and state-of-the-art facilities. Watch our video tour to see why Maria Theresa Ledochowska College is the perfect place for your child's education.
+                    </p>
+                    <div style="display: flex; justify-content: center;">
+                        <video id="tourVideo" width="90%" controls poster="background.jpg">
+                    <source src="tour video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                    </div>
+                </section>
+
+                <!-- Interactive Timeline Section -->
+                <section id="timeline" style="max-width: 900px; margin: 40px auto; background: #f9f9f9; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 32px;">
+                    <h2 style="color: #1976d2;">Our Journey</h2>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>2000:</strong> School founded</li>
+                        <li><strong>2005:</strong> First national exam success</li>
+                        <li><strong>2015:</strong> New science block opened</li>
+                        <li><strong>2020:</strong> 20th Anniversary</li>
+                        <li><strong>2024:</strong> Robotics club wins national award</li>
+                    </ul>
+                </section>
+
+                <!-- Virtual Campus Tour Section -->
+                <section id="virtual-tour" style="max-width: 900px; margin: 40px auto; background: #e3f2fd; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px; text-align: center;">
+                    <h2 style="color: #1976d2;">Virtual Campus Tour</h2>
+                    <p>Explore our campus virtually!</p>
+                    <img src="background.jpg" alt="Virtual Campus Tour" style="width: 100%; max-width: 600px; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.12);">
+                    <p style="margin-top: 10px;">(360° tour coming soon)</p>
+                </section>
+
+                <!-- Student & Staff Spotlight Section -->
+                <section id="spotlight" style="max-width: 900px; margin: 40px auto; background: #fffde7; border-radius: 12px; box-shadow: 0 2px 8px rgba(255,193,7,0.08); padding: 32px;">
+                    <h2 style="color: #ff9800;">Spotlight</h2>
+                    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                        <div style="flex: 1 1 220px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(255,193,7,0.06); padding: 20px;">
+                            <img src="ceo.jpg" alt="Spotlight Student" style="width: 60px; height: 60px; border-radius: 50%;">
+                            <strong>Jane Doe</strong><br>Top Science Student 2024
+                        </div>
+                        <div style="flex: 1 1 220px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(255,193,7,0.06); padding: 20px;">
+                            <img src="ceo.jpg" alt="Spotlight Staff" style="width: 60px; height: 60px; border-radius: 50%;">
+                            <strong>Mr. John Smith</strong><br>Teacher of the Year
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Testimonials Carousel Section (simple static version) -->
+                <section id="testimonials-carousel" style="max-width: 900px; margin: 40px auto; background: #e8f5e9; border-radius: 12px; box-shadow: 0 2px 8px rgba(56,142,60,0.08); padding: 32px;">
+                    <h2 style="color: #388e3c;">What People Say</h2>
+                    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                        <div style="flex: 1 1 260px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(56,142,60,0.06); padding: 20px;">
+                            <p style="font-style: italic; color: #333;">"Amazing school with caring teachers!"</p>
+                            <strong>Parent</strong>
+                        </div>
+                        <div style="flex: 1 1 260px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(56,142,60,0.06); padding: 20px;">
+                            <p style="font-style: italic; color: #333;">"I loved the robotics club and science labs."</p>
+                            <strong>Student</strong>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Event Calendar Section (static) -->
+                <section id="calendar" style="max-width: 900px; margin: 40px auto; background: #f9fbe7; border-radius: 12px; box-shadow: 0 2px 8px rgba(205,220,57,0.08); padding: 32px;">
+                    <h2 style="color: #cddc39;">Upcoming Events</h2>
+                    <ul style="color: #333; font-size: 1.08em;">
+                        <li>June 10: Science Fair</li>
+                        <li>July 5: Sports Day</li>
+                        <li>August 20: Open House</li>
+                        <li>September 15: Alumni Meet</li>
+                    </ul>
+                </section>
+
+                <!-- Downloadable Resources Section -->
+                <section id="resources" style="max-width: 900px; margin: 40px auto; background: #f5f5f5; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 32px;">
+                    <h2 style="color: #1976d2;">Resources</h2>
+                    <ul>
+                        <li><a href="registration-form.html" download>Registration Form</a></li>
+                        <li><a href="#">School Brochure (PDF)</a></li>
+                        <li><a href="#">Newsletter - May 2024</a></li>
+                    </ul>
+                </section>
+
+                <!-- FAQ Section -->
+                <section id="faq" style="max-width: 900px; margin: 40px auto; background: #fff3e0; border-radius: 12px; box-shadow: 0 2px 8px rgba(255,152,0,0.08); padding: 32px;">
+                    <h2 style="color: #ff9800;">Frequently Asked Questions</h2>
+                    <ul style="color: #333; font-size: 1.08em;">
+                        <li><strong>How do I apply?</strong> Use the Admission section or download the registration form.</li>
+                        <li><strong>What subjects are offered?</strong> See the Academics section for a full list.</li>
+                        <li><strong>Is there boarding?</strong> Yes, we offer both day and boarding options.</li>
+                    </ul>
+                </section>
+
+                <!-- Social Media Wall Section (static demo) -->
+                <section id="social-wall" style="max-width: 900px; margin: 40px auto; background: #e3f2fd; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px;">
+                    <h2 style="color: #1976d2;">Social Media Wall</h2>
+                    <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+                        <div style="flex: 1 1 220px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 16px;">
+                            <strong>Facebook</strong><br>
+                            <em>"Check out our latest event photos!"</em>
+                        </div>
+                        <div style="flex: 1 1 220px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 16px;">
+                            <strong>Instagram</strong><br>
+                            <em>"New science lab is open! #MTLC"</em>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Success Metrics Section -->
+                <section id="metrics" style="max-width: 900px; margin: 40px auto; background: #f1f8e9; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px; text-align: center;">
+                    <h2 style="color: #388e3c;">Our Success</h2>
+                    <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; margin: 32px 0;">
+                        <div style="flex: 1 1 180px; min-width: 180px; text-align: center;">
+                            <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">98%</span>
+                            <div style="margin-top: 6px; color: #333;">Graduation Rate</div>
+                        </div>
+                        <div style="flex: 1 1 180px; min-width: 180px; text-align: center;">
+                            <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">50+</span>
+                            <div style="margin-top: 6px; color: #333;">University Scholarships</div>
+                        </div>
+                        <div style="flex: 1 1 180px; min-width: 180px; text-align: center;">
+                            <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">10</span>
+                            <div style="margin-top: 6px; color: #333;">National Awards</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Student Projects Gallery Section -->
+                <section id="projects" style="max-width: 900px; margin: 40px auto; background: #f9f9f9; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 32px;">
+                    <h2 style="color: #1976d2;">Student Projects Gallery</h2>
+                    <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 24px;">
+                        <img src="Gallery (1).jpg" alt="Project 1" style="width: 200px; height: 150px; border-radius: 8px; object-fit: cover;">
+                        <img src="Gallery (2).jpg" alt="Project 2" style="width: 200px; height: 150px; border-radius: 8px; object-fit: cover;">
+                        <img src="Gallery (3).jpg" alt="Project 3" style="width: 200px; height: 150px; border-radius: 8px; object-fit: cover;">
+                    </div>
+                </section>
+
+                <!-- Newsletter Signup Section -->
+                <section id="newsletter" style="max-width: 900px; margin: 40px auto; background: #e3f2fd; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px; text-align: center;">
+                    <h2 style="color: #1976d2;">Subscribe to Our Newsletter</h2>
+                    <form>
+                        <input type="email" placeholder="Your email address" required style="padding: 10px; border-radius: 6px; border: 1px solid #ccc; width: 60%; max-width: 320px;">
+                        <button type="submit" style="background: #1976d2; color: #fff; border: none; border-radius: 6px; padding: 10px 24px; font-size: 1em; font-weight: bold; margin-left: 8px; cursor: pointer;">Subscribe</button>
+                    </form>
+                </section>
+
+                <!-- Language Switcher Section -->
+                <section id="language-switcher" style="max-width: 900px; margin: 40px auto; background: #fffde7; border-radius: 12px; box-shadow: 0 2px 8px rgba(255,193,7,0.08); padding: 32px; text-align: center;">
+                    <h2 style="color: #ff9800;">Choose Language</h2>
+                    <select style="padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 1em;">
+                    <option>English</option>
+                    <option>French</option>
+                    <option>Luganda</option>
+                </select>
+                </section>
+
+                <!-- Interactive Quiz/Poll Section -->
+                <section id="quiz" style="max-width: 900px; margin: 40px auto; background: #f5f5f5; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 32px; text-align: center;">
+                    <h2 style="color: #1976d2;">Quick Poll</h2>
+                    <form>
+                        <p style="color: #333; font-size: 1.13em;">Which new club would you like to see at our school?</p>
+                        <label><input type="radio" name="club" value="Coding"> Coding Club</label><br>
+                        <label><input type="radio" name="club" value="Dance"> Dance Club</label><br>
+                        <label><input type="radio" name="club" value="Photography"> Photography Club</label><br>
+                        <label><input type="radio" name="club" value="Chess"> Chess Club</label><br>
+                        <button type="submit" style="background: #1976d2; color: #fff; border: none; border-radius: 6px; padding: 10px 24px; font-size: 1em; font-weight: bold; margin-top: 12px; cursor: pointer;">Vote</button>
+                    </form>
+                </section>
+
+                <!-- School Location Map Section -->
+                <section id="school-map" style="max-width: 900px; margin: 40px auto; background: #f9f9f9; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 32px;">
+                    <h2 style="color: #1976d2;">Find Us on the Map</h2>
+                    <div style="width: 100%; height: 450px;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d31917.856887884605!2d32.91326069463818!3d0.3766509407844239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smaria%20theresa%20ledochowska.%20college%20lugazi%20p.o.%20box%20258%20.%20lugazi.%20o%20%26%20a!5e0!3m2!1sen!2sug!4v1750095256575!5m2!1sen!2sug"
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </section>
+
+                <!-- Admission Section Anchor -->
+                <section id="enroll" style="max-width: 800px; margin: 40px auto 24px auto; background: #f5f5f5; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 32px;">
+                    <h2 style="color: #1976d2;">Admission</h2>
+                    <p style="color: #333; font-size: 1.13em;">Register for admission using the form provided. For more information, contact the school office.</p>
+                </section>
+
+                <!-- About Us Section Anchor -->
+                <section id="about" style="max-width: 800px; margin: 40px auto 24px auto; background: #f5f5f5; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 32px;">
+                    <h2 style="color: #1976d2;">About Us</h2>
+                    <p style="color: #333; font-size: 1.13em;">Maria Theresa Ledochowska College Lugazi is dedicated to holistic education and nurturing future leaders.</p>
+                </section>
+
+                <!-- Contact Us Section Anchor -->
+                <section id="contact" style="max-width: 800px; margin: 40px auto 24px auto; background: #f5f5f5; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 32px;">
+                    <h2 style="color: #1976d2;">Contact Us</h2>
+                    <p style="color: #333; font-size: 1.13em;">Phone: 0777791053 / 0708366930<br>Email: info@mtlclugazi.ac.ug<br>Address: Maria Theresa Ledochowska College, P.O. Box 258, Lugazi, Uganda</p>
+                </section>
+
+                <!-- Gallery Section Anchor -->
+                <section id="gallery" style="max-width: 900px; margin: 40px auto; background: #f9f9f9; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 32px;">
+                    <h2 style="color: #2c3e50; margin-top: 0;">Gallery</h2>
+                    <p style="color: #333; font-size: 1.1em; line-height: 1.6;">Explore moments from our campus life, events, and activities.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 24px;">
+                        <img src="Gallery (1).jpg" alt="Gallery Image 1" style="width: 200px; height: 150px; border-radius: 8px; object-fit: cover;">
+                        <img src="Gallery (2).jpg" alt="Gallery Image 2" style="width: 200px; height: 150px; border-radius: 8px; object-fit: cover;">
+                        <img src="Gallery (3).jpg" alt="Gallery Image 3" style="width: 200px; height: 150px; border-radius: 8px; object-fit: cover;">
+                        <img src="Gallery (4).jpg" alt="Gallery Image 4" style="width: 200px; height: 150px; border-radius: 8px; object-fit: cover;">
+                    </div>
+                </section>
+
+                <footer class="custom-footer">
+                    <div class="footer-content">
+                        <div class="footer-col">
+                            <img src="image.jpg" alt="School Logo" class="footer-logo">
+                            <p style="line-height: 2;">
+                                <i class="fa fa-envelope"></i> info@mtlclugazi.ac.ug<br>
+                                <i class="fa fa-phone"></i> (+256) 777791053<br>
+                                <i class="fa fa-fax"></i> 0708366930
+                            </p>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Connect with us</h4>
+                            <ul>
+                                <li><a href="https://facebook.com/" target="_blank">Facebook</a></li>
+                                <li><a href="https://twitter.com/" target="_blank">Twitter</a></li>
+                                <li><a href="https://youtube.com/" target="_blank">Youtube</a></li>
+                                <li><a href="https://instagram.com/" target="_blank">Instagram</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Study at MTL College</h4>
+                            <ul>
+                                <li><a href="registration-form.html" target="_blank">How to Apply</a></li>
+                                <li><a href="#about">What do I need</a></li>
+                                <li><a href="#newsletter">Webmail</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <a href="#" class="footer-btn">Read more</a>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        &copy; 2025 Maria Theresa Ledochowska College Lugazi. All rights reserved.
+                    </div>
+                </footer>
+                <!-- Font Awesome for icons -->
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+                <script>
+                    function toggleMenu() {
+                        const menu = document.getElementById('menu');
+                        const btn = document.querySelector('.menu-btn');
+                        const expanded = btn.getAttribute('aria-expanded') === 'true';
+                        menu.classList.toggle('show');
+                        btn.setAttribute('aria-expanded', !expanded);
+                    }
+                    // Optional: Close menu when clicking outside
+                    document.addEventListener('click', function(event) {
+                        const menu = document.getElementById('menu');
+                        const btn = document.querySelector('.menu-btn');
+                        if (menu && btn && !menu.contains(event.target) && !btn.contains(event.target)) {
+                            menu.classList.remove('show');
+                            btn.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                    // Also close menu when a menu item is clicked
+                    Array.from(document.querySelectorAll('.menu a')).forEach(function(link) {
+                        link.addEventListener('click', function() {
+                            document.getElementById('menu').classList.remove('show');
+                            document.querySelector('.menu-btn').setAttribute('aria-expanded', 'false');
+                        });
+                    });
+                </script>
+                <!-- Add this just before the closing </body> tag -->
+                <a href="https://wa.me/256777791053" target="_blank" style="position: fixed; left: 24px; bottom: 24px; z-index: 2000; background: #25d366; border-radius: 50%; box-shadow: 0 2px 8px rgba(44,62,80,0.18); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; opacity: 1;">
+                    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" style="width:32px; height:32px;">
+                </a>
+                <!-- Registration Button: move to left, next to WhatsApp -->
+                <a id="registrationBtn" href="#enroll" class="reg-btn">
+                    <img src="register.jpg" alt="Register" style="width:24px; height:24px;"> Registration
+                </a>
+                <!-- Registration Form Modal (hidden by default, reuse if already present) -->
+                <div id="enrollModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(44,62,80,0.6); z-index:3000; align-items:center; justify-content:center;">
+                    <div style="background:#fff; border-radius:12px; max-width:400px; width:90%; padding:32px 24px; box-shadow:0 4px 24px rgba(44,62,80,0.18); position:relative;">
+                        <button onclick="document.getElementById('enrollModal').style.display='none'" style="position:absolute; top:12px; right:16px; background:none; border:none; font-size:1.5em; color:#1976d2; cursor:pointer;">&times;</button>
+                        <h2 style="margin-top:0; color:#1976d2;">Registration Form</h2>
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScGgqbgZsNxEZQApD_VXr9cToupIGedjrPMdyQK62VuZ-gl8Q/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                        <a href="registration-form.html" download style="display:block; margin-top:18px; text-align:center; background:#388e3c; color:#fff; padding:10px 0; border-radius:6px; font-weight:bold; text-decoration:none;">
+                        Download Registration Form
+                    </a>
+                    </div>
+                </div>
+                <script>
+                    // Show registration modal when Registration button is clicked
+                    var regBtn = document.getElementById('registrationBtn');
+                    if (regBtn) {
+                        regBtn.onclick = function(e) {
+                            e.preventDefault();
+                            document.getElementById('enrollModal').style.display = 'flex';
+                        };
+                    }
+                    // Optional: Close modal when clicking outside the form
+                    var enrollModal = document.getElementById('enrollModal');
+                    if (enrollModal) {
+                        enrollModal.onclick = function(e) {
+                            if (e.target === this) this.style.display = 'none';
+                        };
+                    }
+                    // Link all Enroll Now buttons to open the registration modal
+                    document.querySelectorAll('.enroll-now-btn').forEach(function(btn) {
+                        btn.onclick = function(e) {
+                            e.preventDefault();
+                            document.getElementById('enrollModal').style.display = 'flex';
+                        };
+                    });
+                    // Video Tour Button
+                    var videoTourBtn = document.getElementById('videoTourBtn');
+                    if (videoTourBtn) {
+                        videoTourBtn.onclick = function(e) {
+                            e.preventDefault();
+                            document.getElementById('videoTourModal').style.display = 'flex';
+                            var video = document.getElementById('tourVideo');
+                            video.currentTime = 0;
+                            video.play();
+                            video.onended = function() {
+                                document.getElementById('videoTourModal').style.display = 'none';
+                            };
+                        };
+                    }
+                </script>
+                <!-- ...existing code... -->
+                <div id="videoTourModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(44,62,80,0.7); z-index:4000; align-items:center; justify-content:center;">
+                    <div style="background:#fff; border-radius:12px; max-width:700px; width:95%; padding:0 0 24px 0; box-shadow:0 4px 24px rgba(44,62,80,0.18); position:relative;">
+                        <button onclick="document.getElementById('videoTourModal').style.display='none'; document.getElementById('tourVideo').pause();" style="position:absolute; top:12px; right:16px; background:none; border:none; font-size:2em; color:#1976d2; cursor:pointer;">&times;</button>
+                        <h2 style="margin:24px 0 12px 0; color:#1976d2; text-align:center;">Education at Maria Theresa Ledochowska College</h2>
+                        <div style="display:flex; justify-content:center;">
+                            <!-- Remove or comment out the broken video element -->
+                            <!-- <video id="tourVideo" width="90%" controls poster="background.jpg">
+                            <source src="your-education-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video> -->
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    // Show modal when Video Tour button is clicked
+                    var videoTourBtn = document.getElementById('videoTourBtn');
+                    if (videoTourBtn) {
+                        videoTourBtn.onclick = function(e) {
+                            e.preventDefault();
+                            document.getElementById('videoTourModal').style.display = 'flex';
+                            var video = document.getElementById('tourVideo');
+                            video.currentTime = 0;
+                            video.play();
+                            video.onended = function() {
+                                document.getElementById('videoTourModal').style.display = 'none';
+                            };
+                        };
+                    }
+                    // Close modal when clicking outside the video box
+                    document.getElementById('videoTourModal').onclick = function(e) {
+                        if (e.target === this) {
+                            this.style.display = 'none';
+                            var video = document.getElementById('tourVideo');
+                            video.pause();
+                            video.currentTime = 0;
+                        }
+                    };
+                    // Also close modal and reset video when close button is clicked
+                    document.querySelector('#videoTourModal button').onclick = function() {
+                        document.getElementById('videoTourModal').style.display = 'none';
+                        var video = document.getElementById('tourVideo');
+                        video.pause();
+                        video.currentTime = 0;
+                    };
+                </script>
+                <script>
+                    // Link both Enroll Now and Registration buttons to open the registration modal
+                    var regBtn = document.getElementById('registrationBtn');
+                    if (regBtn) {
+                        regBtn.onclick = function(e) {
+                            e.preventDefault();
+                            document.getElementById('enrollModal').style.display = 'flex';
+                        };
+                    }
+                    document.getElementById('registrationBtn').onclick = function(e) {
+                        e.preventDefault();
+                        document.getElementById('enrollModal').style.display = 'flex';
+                    };
+                </script>
+                <!-- Search functionality (filter content)
+            const searchToggle = document.getElementById('searchToggle');
+            const searchInput = document.getElementById('siteSearchInput');
+            let noResultsMsg = null;
+            searchToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (searchInput.style.display === 'none') {
+                    searchInput.style.display = 'inline-block';
+                    searchInput.focus();
+                } else {
+                    searchInput.value = '';
+                    searchInput.style.display = 'none';
+                    showAllSections();
+                    removeNoResults();
+                }
+            });
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    filterSections(searchInput.value);
+                }
+            });
+            document.addEventListener('click', function(e) {
+                if (searchInput.style.display !== 'none' && !searchInput.contains(e.target) && e.target !== searchToggle) {
+                    searchInput.value = '';
+                    searchInput.style.display = 'none';
+                    showAllSections();
+                    removeNoResults();
+                }
+            });
+            function filterSections(term) {
+                removeNoResults();
+                if (!term.trim()) {
+                    showAllSections();
+                    return;
+                }
+                const sections = Array.from(document.querySelectorAll('section'));
+                let found = false;
+                sections.forEach(section => {
+                    if (section.textContent.toLowerCase().includes(term.toLowerCase())) {
+                        section.style.display = '';
+                        found = true;
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+                if (!found) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.textContent = 'No results found.';
+                    noResultsMsg.style = 'text-align:center; color:#c0392b; font-size:1.2em; margin:40px auto;';
+                    document.body.appendChild(noResultsMsg);
+                }
+            }
+            function showAllSections() {
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = '';
+                });
+            }
+            function removeNoResults() {
+                if (noResultsMsg && noResultsMsg.parentNode) {
+                    noResultsMsg.parentNode.removeChild(noResultsMsg);
+                    noResultsMsg = null;
+                }
+            }
+        </script>
+        <!-- Back to Top Button -->
+                <button id="backToTopBtn" title="Back to top" style="display:none; position:fixed; bottom:32px; right:32px; z-index:5000; background:#1976d2; color:#fff; border:none; border-radius:50%; width:48px; height:48px; box-shadow:0 2px 8px rgba(25,118,210,0.18); font-size:1.7em; cursor:pointer; align-items:center; justify-content:center;">
+            <i class="fa fa-arrow-up"></i>
+        </button>
+                <script>
+                    // Back to Top Button logic
+                    const backToTopBtn = document.getElementById('backToTopBtn');
+                    window.addEventListener('scroll', function() {
+                        if (window.scrollY > 200) {
+                            backToTopBtn.style.display = 'flex';
+                        } else {
+                            backToTopBtn.style.display = 'none';
+                        }
+                    });
+                    backToTopBtn.onclick = function() {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    };
+                </script>
+                <!-- Login/Register Modal -->
+                <div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(44,62,80,0.5); z-index:4000; align-items:center; justify-content:center;">
+                    <div style="background:#fff; border-radius:12px; max-width:370px; width:90%; padding:32px 24px; box-shadow:0 4px 24px rgba(44,62,80,0.18); position:relative; display:flex; flex-direction:column; align-items:center;">
+                        <button id="closeLoginModal" style="position:absolute; top:12px; right:16px; background:none; border:none; font-size:1.5em; color:#1976d2; cursor:pointer;">&times;</button>
+                        <div class="modal-tab-group">
+                            <button id="tabLogin" class="modal-tab active">Login</button>
+                            <button id="tabRegister" class="modal-tab">Register</button>
+                        </div>
+                        <form id="loginForm" style="width:100%; display:flex; flex-direction:column; gap:14px;">
+                            <input type="text" placeholder="Username or Email" required style="padding:10px; border-radius:6px; border:1px solid #ccc; font-size:1em;">
+                            <input type="password" placeholder="Password" required style="padding:10px; border-radius:6px; border:1px solid #ccc; font-size:1em;">
+                            <button type="submit" style="background:#1976d2; color:#fff; border:none; border-radius:6px; padding:10px 0; font-size:1em; font-weight:bold; cursor:pointer;">Login</button>
+                            <a href="#" style="font-size:0.95em; color:#1976d2; text-align:right; text-decoration:none; margin-top:4px;">Forgot password?</a>
+                        </form>
+                        <form id="registerForm" style="width:100%; display:none; flex-direction:column; gap:14px;">
+                            <input type="text" placeholder="Full Name" required style="padding:10px; border-radius:6px; border:1px solid #ccc; font-size:1em;">
+                            <input type="email" placeholder="Email" required style="padding:10px; border-radius:6px; border:1px solid #ccc; font-size:1em;">
+                            <input type="password" placeholder="Password" required style="padding:10px; border-radius:6px; border:1px solid #ccc; font-size:1em;">
+                            <input type="password" placeholder="Confirm Password" required style="padding:10px; border-radius:6px; border:1px solid #ccc; font-size:1em;">
+                            <button type="submit" style="background:#1976d2; color:#fff; border:none; border-radius:6px; padding:10px 0; font-size:1em; font-weight:bold; cursor:pointer;">Register</button>
+                        </form>
+                    </div>
+                </div>
+                <script>
+                    // ... existing code ...
+                    // Login/Register modal logic
+                    const loginBtn = document.getElementById('loginBtn');
+                    const loginModal = document.getElementById('loginModal');
+                    const closeLoginModal = document.getElementById('closeLoginModal');
+                    const tabLogin = document.getElementById('tabLogin');
+                    const tabRegister = document.getElementById('tabRegister');
+                    const loginForm = document.getElementById('loginForm');
+                    const registerForm = document.getElementById('registerForm');
+                    if (loginBtn && loginModal && closeLoginModal && tabLogin && tabRegister && loginForm && registerForm) {
+                        loginBtn.onclick = function(e) {
+                            e.preventDefault();
+                            loginModal.style.display = 'flex';
+                            showLogin();
+                        };
+                        closeLoginModal.onclick = function() {
+                            loginModal.style.display = 'none';
+                        };
+                        loginModal.onclick = function(e) {
+                            if (e.target === loginModal) loginModal.style.display = 'none';
+                        };
+                        tabLogin.onclick = function() {
+                            showLogin();
+                        };
+                        tabRegister.onclick = function() {
+                            showRegister();
+                        };
+                        loginForm.onsubmit = function(e) {
+                            e.preventDefault();
+                            alert('Login submitted! (Demo only)');
+                            loginModal.style.display = 'none';
+                        };
+                        registerForm.onsubmit = function(e) {
+                            e.preventDefault();
+                            alert('Registration submitted! (Demo only)');
+                            loginModal.style.display = 'none';
+                        };
+
+                        function showLogin() {
+                            tabLogin.classList.add('active');
+                            tabRegister.classList.remove('active');
+                            loginForm.style.display = 'flex';
+                            registerForm.style.display = 'none';
+                        }
+
+                        function showRegister() {
+                            tabRegister.classList.add('active');
+                            tabLogin.classList.remove('active');
+                            loginForm.style.display = 'none';
+                            registerForm.style.display = 'flex';
+                        }
+                    }
+                    // ... existing code ...
+                </script>
+</body>
+
+</html>

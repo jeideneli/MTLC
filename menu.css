@@ -1,0 +1,94 @@
+#menu {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.menu-btn {
+    background: none;
+    border: 2px solid #1976d2;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 16px;
+    right: 32px;
+    z-index: 2001;
+}
+.menu-btn span {
+    display: block;
+    width: 28px;
+    height: 4px;
+    margin: 4px 0;
+    background: #1976d2;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+#menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#menu li {
+    margin: 5px 0;
+}
+
+#menu.hidden {
+    display: none;
+}
+
+#menu.visible {
+    display: block;
+}
+
+#registrationForm {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #aaa;
+    background: #fafafa;
+}
+
+#registrationForm.visible {
+    display: block;
+}
+
+#registrationForm.hidden {
+    display: none;
+}
+
+/* School badge styles */
+.school-badge {
+    height: 90px;
+    margin-right: 32px;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.18);
+    background: #fff;
+    padding: 6px;
+    display: block;
+}
+
+/* Header layout for badge and title independence */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: #2c3e50;
+    color: #fff;
+    padding: 16px 32px;
+    position: relative;
+    gap: 18px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
