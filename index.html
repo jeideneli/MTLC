@@ -255,17 +255,24 @@
         
         .footer-content {
             display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
+            flex-direction: row;
             flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 32px;
+            gap: 0;
+            justify-content: center;
+            align-items: flex-start;
         }
         
         .footer-col {
-            flex: 1 1 220px;
-            margin: 0 16px 24px 16px;
+            width: 33.33%;
+            min-width: 120px;
+            max-width: 33vw;
+            margin: 0 0 8px 0;
+            padding: 0 4px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
         }
         
         .footer-logo {
@@ -814,6 +821,25 @@
             background: #fff;
             border-radius: 6px;
         }
+        @media (max-width: 700px) {
+            .directors-flex {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                gap: 12px !important;
+                justify-content: flex-start !important;
+            }
+            .directors-flex img {
+                min-width: 90px !important;
+                max-width: 100px !important;
+                width: 100px !important;
+                height: 100px !important;
+                margin: 0 !important;
+            }
+            .directors-flex > div {
+                min-width: 180px !important;
+                max-width: 220px !important;
+            }
+        }
     </style>
 </head>
 
@@ -895,19 +921,39 @@
         <!-- CEO Section -->
         <section style="max-width: 900px; margin: 32px auto; background: #f8f9fa; border-radius: 8px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 16px;">
             <h2 style="color: #2c3e50; margin-top: 0;">Meet Our Directors</h2>
-            <div style="display: flex; align-items: center; gap: 16px; background: #fff; border-radius: 10px; padding: 8px 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.10);">
-                <img src="ceo maria .jpg" alt="Director 1" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(44,62,80,0.18); background: #eaf6fb;">
-                <img src="anty tebi.jpg" alt="Director 2" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(44,62,80,0.18); background: #eaf6fb;">
-                <img src="treza.jpg" alt="Director 3" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(44,62,80,0.18); background: #eaf6fb;">
+            <div class="directors-flex" style="display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; align-items: flex-start;">
+                <img src="ceo maria .jpg" alt="Director 1" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(44,62,80,0.18); background: #eaf6fb; margin: 0 auto;">
+                <img src="anty tebi.jpg" alt="Director 2" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(44,62,80,0.18); background: #eaf6fb; margin: 0 auto;">
+                <img src="treza.jpg" alt="Director 3" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(44,62,80,0.18); background: #eaf6fb; margin: 0 auto;">
                 <div>
                     <h3 style="margin: 0 0 8px 0;">Maria Thereza Ledochwska</h3>
                     <p style="margin: 0; color: #333;">
-                        Maria Thereza Ledochwska is the visionary CEO of our college. Her dedication to education, leadership, and community service inspires both staff and students. Under her guidance, Maria Thereza Ledochwska College continues to excel in academic and social
-                        development.
+                        Maria Thereza Ledochwska is the visionary CEO of our college. Her dedication to education, leadership, and community service inspires both staff and students. Under her guidance, Maria Thereza Ledochwska College continues to excel in academic and social development.
                     </p>
                 </div>
             </div>
         </section>
+        <style>
+        @media (max-width: 700px) {
+            .directors-flex {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                gap: 12px !important;
+                justify-content: flex-start !important;
+            }
+            .directors-flex img {
+                min-width: 90px !important;
+                max-width: 100px !important;
+                width: 100px !important;
+                height: 100px !important;
+                margin: 0 !important;
+            }
+            .directors-flex > div {
+                min-width: 180px !important;
+                max-width: 220px !important;
+            }
+        }
+        </style>
         <!-- Why Maria Theresa Ledochowska College Section -->
         <section style="max-width: 700px; margin: 40px auto; background: #eaf6fb; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px;">
             <h2 style="color: #2c3e50; margin-top: 0;">Why Maria Thereza Ledochwska College?</h2>
@@ -934,7 +980,7 @@
             <h2 style="color: #2c3e50; margin-top: 0;">Our Subjects, Clubs & Tours</h2>
             <!-- Removed Computer Lab Image from here -->
             <h3 style="color: #2980b9;">Subjects Offered</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 18px;">
+            <div class="subjects-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; justify-items: center; align-items: start;">
                 <div style="flex: 1 1 180px; min-width: 180px;">
                     <img src="https://img.icons8.com/color/96/000000/book.png" alt="English" style="width:48px;">
                     <p><strong>English Language & Literature</strong></p>
@@ -1343,16 +1389,16 @@
         <!-- Success Metrics Section -->
         <section id="metrics" style="max-width: 900px; margin: 40px auto; background: #f1f8e9; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px; text-align: center;">
             <h2 style="color: #388e3c;">Our Success</h2>
-            <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; margin: 32px 0;">
-                <div style="flex: 1 1 180px; min-width: 180px; text-align: center;">
+            <div style="display: flex; flex-wrap: nowrap; gap: 32px; justify-content: center; align-items: flex-start;">
+                <div style="flex: 1 1 180px; min-width: 120px; max-width: 220px; text-align: center;">
                     <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">98%</span>
                     <div style="margin-top: 6px; color: #333;">Graduation Rate</div>
                 </div>
-                <div style="flex: 1 1 180px; min-width: 180px; text-align: center;">
+                <div style="flex: 1 1 180px; min-width: 120px; max-width: 220px; text-align: center;">
                     <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">50+</span>
                     <div style="margin-top: 6px; color: #333;">University Scholarships</div>
                 </div>
-                <div style="flex: 1 1 180px; min-width: 180px; text-align: center;">
+                <div style="flex: 1 1 180px; min-width: 120px; max-width: 220px; text-align: center;">
                     <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">10</span>
                     <div style="margin-top: 6px; color: #333;">National Awards</div>
                 </div>
