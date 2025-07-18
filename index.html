@@ -575,28 +575,61 @@
                 overflow-x: auto !important;
                 display: flex !important;
             }
-            a[ href^="https://wa.me"],
-            #registrationBtn.reg-btn {
-                width: 40px !important;
-                height: 40px !important;
-                min-width: 40px !important;
-                min-height: 40px !important;
+            a[ href^="https://wa.me"] {
+                width: 36px !important;
+                height: 36px !important;
+                min-width: 36px !important;
+                min-height: 36px !important;
                 padding: 0 !important;
-                font-size: 0.95em !important;
-                border-radius: 20px !important;
+                font-size: 0.9em !important;
+                border-radius: 18px !important;
                 box-shadow: 0 1px 4px rgba(44, 62, 80, 0.12);
                 display: flex !important;
                 align-items: center;
                 justify-content: center;
+                bottom: 24px !important;
+                left: 12px !important;
+                z-index: 2000 !important;
+                margin-bottom: 12px !important;
             }
-            a[ href^="https://wa.me"] img,
+            a[ href^="https://wa.me"] img {
+                width: 18px !important;
+                height: 18px !important;
+            }
+            #registrationBtn.reg-btn {
+                width: 36px !important;
+                height: 36px !important;
+                min-width: 36px !important;
+                min-height: 36px !important;
+                padding: 0 !important;
+                border-radius: 50% !important;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                bottom: 72px !important;
+                left: 12px !important;
+            }
             #registrationBtn.reg-btn img {
-                width: 20px !important;
-                height: 20px !important;
+                width: 18px !important;
+                height: 18px !important;
             }
-            #loginBtn {
-                font-size: 1em !important;
-                padding: 6px !important;
+            #registrationBtn.reg-btn span,
+            #registrationBtn.reg-btn .reg-text {
+                display: none !important;
+            }
+            #backToTopBtn {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 1.2em !important;
+                right: 12px !important;
+                bottom: 24px !important;
+                z-index: 2100 !important;
+            }
+            #backToTopBtn {
+                left: 12px !important;
+                right: auto !important;
+                bottom: 24px !important;
             }
         }
         
@@ -628,6 +661,48 @@
                 font-size: 1em !important;
                 padding: 6px 10px !important;
             }
+            #backToTopBtn {
+                right: 12px !important;
+                left: auto !important;
+                bottom: 24px !important;
+            }
+        }
+        /* ...existing mobile styles... */
+        /* Directors section mobile styles */
+        
+        section[style*='Meet Our Directors'],
+        section:has(h2[style*='Meet Our Directors']) {
+            max-width: 100vw !important;
+            margin: 18px 0 !important;
+            padding: 10px 2px !important;
+        }
+        
+        section[style*='Meet Our Directors'] .director-flex,
+        section:has(h2[style*='Meet Our Directors'])>div[style*='display: flex'] {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 16px !important;
+            text-align: center !important;
+        }
+        
+        section[style*='Meet Our Directors'] img,
+        section:has(h2[style*='Meet Our Directors']) img {
+            width: 70px !important;
+            height: 70px !important;
+            margin: 0 auto 8px auto !important;
+            display: block !important;
+        }
+        
+        section[style*='Meet Our Directors'] h3,
+        section:has(h2[style*='Meet Our Directors']) h3 {
+            font-size: 1.1em !important;
+            margin-top: 8px !important;
+        }
+        
+        section[style*='Meet Our Directors'] p,
+        section:has(h2[style*='Meet Our Directors']) p {
+            font-size: 1em !important;
+            margin: 0 0 8px 0 !important;
         }
     </style>
 </head>
