@@ -163,11 +163,11 @@
             position: fixed;
             top: 80px;
             right: 32px;
-            background: #34495e;
+            background: #232e36;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            min-width: 180px;
-            z-index: 9999;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+            min-width: 200px;
+            z-index: 12000;
         }
         
         .menu.show {
@@ -177,17 +177,24 @@
         .menu a {
             color: #fff;
             text-decoration: none;
-            padding: 14px 24px;
+            padding: 18px 28px;
             border-bottom: 1px solid #2c3e50;
             transition: background 0.2s;
+            font-size: 1.18em;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px #111;
         }
         
         .menu a:last-child {
             border-bottom: none;
         }
         
-        .menu a:hover {
-            background: #2c3e50;
+        .menu a:hover,
+        .menu a:focus {
+            background: #1976d2;
+            color: #fff;
+            outline: none;
         }
         
         h1 {
@@ -631,6 +638,61 @@
                 right: auto !important;
                 bottom: 24px !important;
             }
+            .custom-footer {
+                padding: 12px 0 0 0 !important;
+                font-size: 0.95em !important;
+            }
+            .footer-content {
+                padding: 0 4px !important;
+            }
+            .footer-col {
+                margin: 0 0 8px 0 !important;
+                padding: 0 4px !important;
+            }
+            .footer-logo {
+                width: 40px !important;
+                margin: 0 auto 6px auto !important;
+            }
+            .footer-bottom {
+                padding: 8px 0 !important;
+                font-size: 0.95em !important;
+                margin-top: 8px !important;
+                border-radius: 0 0 8px 8px !important;
+            }
+            .footer-content {
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                gap: 0 !important;
+                justify-content: center !important;
+                align-items: flex-start !important;
+            }
+            .footer-col {
+                width: 33.33% !important;
+                min-width: 80px !important;
+                max-width: 33vw !important;
+                margin: 0 0 8px 0 !important;
+                padding: 0 4px !important;
+                text-align: center !important;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-col ul,
+            .footer-col p {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .footer-col ul li,
+            .footer-col p span {
+                display: block !important;
+                width: 100% !important;
+                margin: 0 0 4px 0 !important;
+                text-align: center !important;
+            }
         }
         
         .footer-col p {
@@ -704,6 +766,54 @@
             font-size: 1em !important;
             margin: 0 0 8px 0 !important;
         }
+        
+        @media (max-width: 700px),
+        (max-width: 600px) {
+            .menu {
+                min-width: 80vw !important;
+                max-width: 95vw !important;
+                overflow-x: auto !important;
+            }
+            .menu a {
+                white-space: normal !important;
+                word-break: break-word !important;
+                text-align: left !important;
+                padding-left: 24px !important;
+                padding-right: 24px !important;
+            }
+        }
+        /* ...existing styles... */
+        
+        #library img {
+            width: 220px !important;
+            height: 160px !important;
+            object-fit: cover !important;
+            display: block !important;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+            margin: 0;
+        }
+        /* ...existing styles... */
+        
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            justify-items: center;
+            align-items: center;
+            margin-top: 18px;
+        }
+        
+        .featured-grid img {
+            max-width: 140px;
+            width: 100%;
+            height: 48px;
+            object-fit: contain;
+            margin: 0;
+            background: #fff;
+            border-radius: 6px;
+        }
     </style>
 </head>
 
@@ -734,8 +844,10 @@
     <header>
         <img src="shool badge.jpg" alt="School Badge" style="height:80px; margin-right:24px; float:none; border-radius:12px; box-shadow:0 2px 8px rgba(44,62,80,0.18);">
         <h1>MARIA THEREZA LEDOCHWSKA COLLEGE LUGAZI</h1>
-        <button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('.main-nav').classList.toggle('show')">
-            <i class="fa fa-bars"></i>
+        <button class="menu-btn" aria-label="Open menu" aria-expanded="false" type="button">
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
         <nav class="main-nav">
             <a href="#display">Home</a>
@@ -977,9 +1089,11 @@
         <!-- Library Section -->
         <section id="library" style="max-width: 900px; margin: 48px auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 32px;">
             <h2 style="color: #1976d2; margin-top: 0;">Library</h2>
-            <img src="library 2.jpeg" alt="Library" style="height: 250px; width: 300px; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.12); margin: 24px 12px 24px 0; display: inline-block; vertical-align: middle;">
-            <img src="library 3.jpeg" alt="Library" style="height: 250px; width: 300px; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.12); margin: 24px 12px 24px 12px; display: inline-block; vertical-align: middle;">
-            <img src="library2.jpg" alt="Library" style="height: 250px; width: 300px; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.12); margin: 24px 0 24px 12px; display: inline-block; vertical-align: middle;">
+            <div style="display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 12px; justify-content: flex-start; align-items: center; width: 100%;">
+                <img src="library 2.jpeg" alt="Library">
+                <img src="library 3.jpeg" alt="Library">
+                <img src="library2.jpg" alt="Library">
+            </div>
         </section>
 
         <!-- Learn and Grow Together Section -->
@@ -1039,11 +1153,11 @@
         <!-- Featured In Section -->
         <section style="max-width: 800px; margin: 40px auto 24px auto; background: #fff3e0; border-radius: 12px; box-shadow: 0 2px 8px rgba(255,152,0,0.08); padding: 32px; text-align: center;">
             <h2 style="color: #ff9800; margin-top: 0;">Featured In</h2>
-            <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; align-items: center; margin-top: 24px;">
-                <img src="Buk logo.jpg" alt="Daily Monitor" style="height: 48px;">
-                <img src="Daily monitor.jpg" alt="New Vision" style="height: 48px;">
-                <img src="NTV.jpg" alt="NTV Uganda" style="height: 48px;">
-                <img src="UBC.jpg" alt="UBC TV" style="height: 48px;">
+            <div class="featured-grid">
+                <img src="Buk logo.jpg" alt="Daily Monitor">
+                <img src="Daily monitor.jpg" alt="New Vision">
+                <img src="NTV.jpg" alt="NTV Uganda">
+                <img src="UBC.jpg" alt="UBC TV">
             </div>
             <p style="color: #333; margin-top: 18px;">
                 Maria Thereza Ledochwska College has been recognized by leading media houses for its excellence in education and community impact.
@@ -1368,29 +1482,33 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
         <script>
-            function toggleMenu() {
-                const menu = document.getElementById('menu');
-                const btn = document.querySelector('.menu-btn');
-                const expanded = btn.getAttribute('aria-expanded') === 'true';
-                menu.classList.toggle('show');
-                btn.setAttribute('aria-expanded', !expanded);
-            }
-            // Optional: Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                const menu = document.getElementById('menu');
-                const btn = document.querySelector('.menu-btn');
-                if (menu && btn && !menu.contains(event.target) && !btn.contains(event.target)) {
-                    menu.classList.remove('show');
-                    btn.setAttribute('aria-expanded', 'false');
+            // Mobile menu toggle logic
+            (function() {
+                var menuBtn = document.querySelector('.menu-btn');
+                var menu = document.getElementById('menu');
+                if (menuBtn && menu) {
+                    menuBtn.onclick = function(e) {
+                        e.stopPropagation();
+                        var expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+                        menu.classList.toggle('show');
+                        menuBtn.setAttribute('aria-expanded', !expanded);
+                    };
+                    // Close menu when a menu link is clicked
+                    Array.from(menu.querySelectorAll('a')).forEach(function(link) {
+                        link.addEventListener('click', function() {
+                            menu.classList.remove('show');
+                            menuBtn.setAttribute('aria-expanded', 'false');
+                        });
+                    });
+                    // Close menu when clicking outside
+                    document.addEventListener('click', function(event) {
+                        if (menu.classList.contains('show') && !menu.contains(event.target) && !menuBtn.contains(event.target)) {
+                            menu.classList.remove('show');
+                            menuBtn.setAttribute('aria-expanded', 'false');
+                        }
+                    });
                 }
-            });
-            // Also close menu when a menu item is clicked
-            Array.from(document.querySelectorAll('.menu a')).forEach(function(link) {
-                link.addEventListener('click', function() {
-                    document.getElementById('menu').classList.remove('show');
-                    document.querySelector('.menu-btn').setAttribute('aria-expanded', 'false');
-                });
-            });
+            })();
         </script>
         <!-- Add this just before the closing </body> tag -->
         <a href="https://wa.me/256772450925" target="_blank" rel="noopener" style="position: fixed; left: 24px; bottom: 24px; z-index: 2000; background: #25d366; border-radius: 50%; box-shadow: 0 2px 8px rgba(44,62,80,0.18); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; opacity: 1;">
@@ -1672,6 +1790,28 @@
                 }
             }
             // ... existing code ...
+        </script>
+        <script>
+            // ... existing code ...
+            // Ensure mobile menu closes when a link is clicked or clicking outside
+            document.addEventListener('DOMContentLoaded', function() {
+                var menu = document.getElementById('menu');
+                var menuBtn = document.querySelector('.menu-btn');
+                // Close menu when a menu link is clicked
+                Array.from(document.querySelectorAll('.menu a')).forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        menu.classList.remove('show');
+                        if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (menu && menuBtn && !menu.contains(event.target) && !menuBtn.contains(event.target)) {
+                        menu.classList.remove('show');
+                        menuBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
         </script>
 </body>
 
