@@ -821,6 +821,7 @@
             background: #fff;
             border-radius: 6px;
         }
+        
         @media (max-width: 700px) {
             .directors-flex {
                 flex-wrap: nowrap !important;
@@ -835,7 +836,7 @@
                 height: 100px !important;
                 margin: 0 !important;
             }
-            .directors-flex > div {
+            .directors-flex>div {
                 min-width: 180px !important;
                 max-width: 220px !important;
             }
@@ -921,38 +922,39 @@
         <!-- CEO Section -->
         <section style="max-width: 900px; margin: 32px auto; background: #f8f9fa; border-radius: 8px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 16px;">
             <h2 style="color: #2c3e50; margin-top: 0;">Meet Our Directors</h2>
-            <div class="directors-flex" style="display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; align-items: flex-start;">
-                <img src="ceo maria .jpg" alt="Director 1" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(44,62,80,0.18); background: #eaf6fb; margin: 0 auto;">
-                <img src="anty tebi.jpg" alt="Director 2" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(44,62,80,0.18); background: #eaf6fb; margin: 0 auto;">
-                <img src="treza.jpg" alt="Director 3" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(44,62,80,0.18); background: #eaf6fb; margin: 0 auto;">
+            <div class="directors-flex" style="display: flex; flex-direction: row; flex-wrap: nowrap; overflow-x: auto; gap: 18px; justify-content: center; align-items: flex-start;">
+                <img src="ceo maria .jpg" alt="Director 1" style="min-width: 90px; max-width: 100px; width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(44,62,80,0.18); background: #eaf6fb; margin: 0 auto;">
+                <img src="anty tebi.jpg" alt="Director 2" style="min-width: 90px; max-width: 100px; width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(44,62,80,0.18); background: #eaf6fb; margin: 0 auto;">
+                <img src="treza.jpg" alt="Director 3" style="min-width: 90px; max-width: 100px; width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(44,62,80,0.18); background: #eaf6fb; margin: 0 auto;">
                 <div>
                     <h3 style="margin: 0 0 8px 0;">Maria Thereza Ledochwska</h3>
                     <p style="margin: 0; color: #333;">
-                        Maria Thereza Ledochwska is the visionary CEO of our college. Her dedication to education, leadership, and community service inspires both staff and students. Under her guidance, Maria Thereza Ledochwska College continues to excel in academic and social development.
+                        Maria Thereza Ledochwska is the visionary CEO of our college. Her dedication to education, leadership, and community service inspires both staff and students. Under her guidance, Maria Thereza Ledochwska College continues to excel in academic and social
+                        development.
                     </p>
                 </div>
             </div>
         </section>
         <style>
-        @media (max-width: 700px) {
-            .directors-flex {
-                flex-wrap: nowrap !important;
-                overflow-x: auto !important;
-                gap: 12px !important;
-                justify-content: flex-start !important;
+            @media (max-width: 700px) {
+                .directors-flex {
+                    flex-wrap: nowrap !important;
+                    overflow-x: auto !important;
+                    gap: 12px !important;
+                    justify-content: flex-start !important;
+                }
+                .directors-flex img {
+                    min-width: 90px !important;
+                    max-width: 100px !important;
+                    width: 100px !important;
+                    height: 100px !important;
+                    margin: 0 !important;
+                }
+                .directors-flex>div {
+                    min-width: 180px !important;
+                    max-width: 220px !important;
+                }
             }
-            .directors-flex img {
-                min-width: 90px !important;
-                max-width: 100px !important;
-                width: 100px !important;
-                height: 100px !important;
-                margin: 0 !important;
-            }
-            .directors-flex > div {
-                min-width: 180px !important;
-                max-width: 220px !important;
-            }
-        }
         </style>
         <!-- Why Maria Theresa Ledochowska College Section -->
         <section style="max-width: 700px; margin: 40px auto; background: #eaf6fb; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px;">
@@ -1064,7 +1066,7 @@
             </div>
 
             <h3 id="clubs" style="color: #2980b9; margin-top: 32px;">Student Clubs</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 18px;">
+            <div class="clubs-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; justify-items: center; align-items: start;">
                 <div style="flex: 1 1 220px; min-width: 220px;">
                     <img src="https://img.icons8.com/color/96/000000/theatre-mask.png" alt="Drama Club" style="width:48px;">
                     <p><strong>Drama Club:</strong> Express creativity through acting, script writing, and stage performance.</p>
@@ -1108,7 +1110,7 @@
             </div>
 
             <h3 style="color: #2980b9; margin-top: 32px;">Outside Tours & Excursions</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 18px;">
+            <div class="tours-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; justify-items: center; align-items: start;">
                 <div style="flex: 1 1 260px; min-width: 260px;">
                     <img src="https://img.icons8.com/color/96/000000/bus.png" alt="Educational Tours" style="width:48px;">
                     <p><strong>Educational Tours:</strong> Visits to museums, science centers, and historical sites to enhance classroom learning.</p>
@@ -1163,7 +1165,7 @@
                 Maria Thereza Ledochwska College is one of the few schools offering a variety of learning areas to its clients. The school has learning areas in all subject groups examinable by the country's examining board – <strong>UNEB</strong>. Our
                 diverse curriculum ensures that every student finds their passion and excels academically and socially.
             </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; margin: 32px 0;">
+            <div class="glance-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; justify-items: center; align-items: start; margin: 32px 0;">
                 <div style="flex: 1 1 180px; min-width: 180px; text-align: center;">
                     <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">20+</span>
                     <div style="margin-top: 6px; color: #333;">Subjects Offered</div>
@@ -1213,8 +1215,8 @@
         <!-- Testimonials Section -->
         <section style="max-width: 800px; margin: 40px auto 24px auto; background: #e8f5e9; border-radius: 12px; box-shadow: 0 2px 8px rgba(56,142,60,0.08); padding: 32px;">
             <h2 style="color: #388e3c; margin-top: 0;">What Our Alumni Say</h2>
-            <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
-                <div style="flex: 1 1 260px; min-width: 260px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(56,142,60,0.06); padding: 20px;">
+            <div class="alumni-flex" style="display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; align-items: stretch;">
+                <div style="flex: 1 1 260px; min-width: 260px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(56,142,60,0.06); padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
                     <p style="font-style: italic; color: #333;">"The personalized attention I received at Maria Thereza Ledochwska College helped me excel in my studies. Today, I am working at a top bank in Kampala."</p>
                     <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">
                         <img src="ceo.jpg" alt="Alumni 1" style="width: 48px; height: 48px; border-radius: 50%;">
@@ -1223,7 +1225,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="flex: 1 1 260px; min-width: 260px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(56,142,60,0.06); padding: 20px;">
+                <div style="flex: 1 1 260px; min-width: 260px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(56,142,60,0.06); padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
                     <p style="font-style: italic; color: #333;">"Thanks to the supportive teachers and diverse clubs, I got a scholarship to Makerere University. I am proud to be an alumna of this great school."</p>
                     <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">
                         <img src="ceo.jpg" alt="Alumni 2" style="width: 48px; height: 48px; border-radius: 50%;">
@@ -1232,7 +1234,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="flex: 1 1 260px; min-width: 260px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(56,142,60,0.06); padding: 20px;">
+                <div style="flex: 1 1 260px; min-width: 260px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(56,142,60,0.06); padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
                     <p style="font-style: italic; color: #333;">"The skills I learned at Maria Thereza Ledochwska College opened doors for me at a leading tech company. The experience was truly life-changing."</p>
                     <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">
                         <img src="ceo.jpg" alt="Alumni 3" style="width: 48px; height: 48px; border-radius: 50%;">
@@ -1246,6 +1248,20 @@
                 Many of our graduates are now employed in top offices and universities both in Uganda and abroad.
             </p>
         </section>
+        <style>
+            @media (max-width: 700px) {
+                .alumni-flex {
+                    flex-direction: column !important;
+                    gap: 16px !important;
+                    align-items: stretch !important;
+                }
+                .alumni-flex>div {
+                    width: 100% !important;
+                    min-width: 0 !important;
+                    margin-bottom: 0 !important;
+                }
+            }
+        </style>
         <section style="max-width: 800px; margin: 40px auto 24px auto; background: #e3f2fd; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px; text-align: center;">
             <h2 style="color: #1976d2; margin-top: 0;">Because You Deserve to Shine</h2>
             <p style="color: #333; font-size: 1.15em;">
@@ -1389,18 +1405,18 @@
         <!-- Success Metrics Section -->
         <section id="metrics" style="max-width: 900px; margin: 40px auto; background: #f1f8e9; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 32px; text-align: center;">
             <h2 style="color: #388e3c;">Our Success</h2>
-            <div style="display: flex; flex-wrap: nowrap; gap: 32px; justify-content: center; align-items: flex-start;">
+            <div style="display: flex; flex-wrap: nowrap; gap: 12px; justify-content: center; align-items: flex-start;">
                 <div style="flex: 1 1 180px; min-width: 120px; max-width: 220px; text-align: center;">
-                    <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">98%</span>
-                    <div style="margin-top: 6px; color: #333;">Graduation Rate</div>
+                    <span style="font-size: 1.3em; color: #1976d2; font-weight: bold;">98%</span>
+                    <div style="margin-top: 2px; color: #333; font-size: 0.95em;">Graduation Rate</div>
                 </div>
                 <div style="flex: 1 1 180px; min-width: 120px; max-width: 220px; text-align: center;">
-                    <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">50+</span>
-                    <div style="margin-top: 6px; color: #333;">University Scholarships</div>
+                    <span style="font-size: 1.3em; color: #1976d2; font-weight: bold;">50+</span>
+                    <div style="margin-top: 2px; color: #333; font-size: 0.95em;">University Scholarships</div>
                 </div>
                 <div style="flex: 1 1 180px; min-width: 120px; max-width: 220px; text-align: center;">
-                    <span style="font-size: 2.2em; color: #1976d2; font-weight: bold;">10</span>
-                    <div style="margin-top: 6px; color: #333;">National Awards</div>
+                    <span style="font-size: 1.3em; color: #1976d2; font-weight: bold;">10</span>
+                    <div style="margin-top: 2px; color: #333; font-size: 0.95em;">National Awards</div>
                 </div>
             </div>
         </section>
